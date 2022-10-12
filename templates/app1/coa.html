@@ -51,13 +51,25 @@
                                                         <div class="col-md-6">
                                                             <label for="acctyp">Account Type</label>
                                                             <select name="acctype" id="select1"
-                                                                    class="custom-select-md form-control w-100" required>
+                                                                    class="custom-select-md form-control w-100">
                                                                    
-                                                                    <option>Undepposited Funds</option>
-                                                                    <option>Cash </option>
+                                                                    <option >Account Receivable</option>
+                                                                    <option>Current Assets</option>
                                                                     <option>Bank</option>
-                                                                   
-                                                                   
+                                                                    <option>Fixed Assets</option>
+                                                                    <option>Non-Current Assets</option>
+                                                                    <option>Accounts Payable</option>
+                                                                    <option>Credit Card</option>
+                                                                    <option>Current Liabilities</option>
+                                                                    <option>Non-Current Liabilities</option>
+                                                                    <option>Equity</option>
+                                                                    <option>Income</option>
+                                                                    <option>Other Incomes</option>
+                                                                    <option>Cost Of Goods</option>
+                                                                    <option>Expenses</option>
+                                                                    <option>Other Expenses</option>
+                                                                    <option>Stock(New)</option>
+                                                                    <option>Cash(New)</option>
                                                                     
                                                                    
                                                                 
@@ -66,26 +78,22 @@
                                                         <div class="col-md-6">
                                                             <label for="name">*Name</label>
                                                             <input name="name" id="name"
-                                                                   class="custom-select-md form-control w-100" required>
+                                                                   class="custom-select-md form-control w-100">
                                                         </div>
-                                                        
                                                     </div>
-                                                    
                                                     <div class="row mt-2 mb-2">
                                                         
                                                         <div class="col-md-6">
                                                             <label for="description">Description</label>
-                                                            <input type="text" name="description" class="form-control" required>
+                                                            <input type="text" name="description" class="form-control">
                                                         </div>
                                                     </div>
-                                                    
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                     <textarea class="form-control mt-2" name="Type details" cols="20"
                                                               rows="10" style="font-size: small;" disabled>Use Cash and Cash Equivalents to track cash or assets that can be converted into cash immediately. For example, marketable securities and Treasury bills.</textarea>
                                                         </div>
                                                         <div class="col-md-6 mt-2">
-                                                            
                                                             <div class="form-check">
                                                                 <div>
                                                                     <input class="form-check-input" name="issub"
@@ -101,7 +109,6 @@
                                                                 <select name="gst" id="gst"
                                                                         class="custom-select-md form-control w-100"
                                                                         disabled="disabled">
-                                                                        <option></option>
                                                                     <option value="Deferred CGST">Deferred CGST</option>
                                                                     <option value="Deferred GST Input Credit">Deferred
                                                                         GST Input Credit
@@ -288,18 +295,18 @@
                                                                 <div class="col-md-6">
                                                                     <label for="balance">Credit</label>
                                                                     <input type="text" name="balance" id="balance"
-                                                                           class="form-control" value="0">
+                                                                           class="form-control"  value="0">
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="asof">as of</label>
                                                                     <input type="text" name="asof" id="asof"
                                                                            class="form-control" value="{{ tod }}"
-                                                                           required>
+                                                                           required >
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="balance">Debit</label>
                                                                     <input type="text" name="balance" id="balance"
-                                                                           class="form-control" value="0">dr
+                                                                           class="form-control" value="0">
                                                                 </div>
                                                             </div>
 

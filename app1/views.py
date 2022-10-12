@@ -901,7 +901,7 @@ def createaccount(request):
     asof = request.POST.get('asof')
        
         
-    account = accounts(acctype=acctype, name=name, description=description,
+    account = accounts1(acctype=acctype, name=name, description=description,
                                     balance=balance, asof=asof, cid=cmp1)
     account.save()
                 
