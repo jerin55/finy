@@ -556,6 +556,9 @@ urlpatterns = [
     re_path(r'^temp_custst$',views.temp_custst,name='temp_custst'),
     re_path(r'^temp_vendst$',views.temp_vendst,name='temp_vendst'),
     re_path(r'^accpayment$',views.accpayment,name='accpayment'),
+    re_path(r'^trial$',views.trial,name='trial'),
+    re_path(r'^cras$',views.cras,name='cras'),
+    re_path(r'^crass/(?P<pk>\d+)$',views.crass,name='crass'),
     
 
     

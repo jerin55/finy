@@ -888,6 +888,7 @@ class accounts1(models.Model):
     gst = models.CharField(max_length=100, default='', null=True)
     deftaxcode = models.CharField(max_length=100)
     balance = models.FloatField(default=0.0, null=True)
+    dbbalance=models.FloatField(default=0.0, null=True)
     asof = models.DateField(null=True)
 
 

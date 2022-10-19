@@ -899,10 +899,11 @@ def createaccount(request):
     
     balance = request.POST.get('balance')
     asof = request.POST.get('asof')
+    dbbalance=request.POST.get('dbbalance')
        
         
     account = accounts1(acctype=acctype, name=name, description=description,
-                                    balance=balance, asof=asof, cid=cmp1)
+                                    balance=balance, asof=asof, cid=cmp1,dbbalance=dbbalance)
     account.save()
                 
     return redirect('gocoa')
@@ -27847,7 +27848,7 @@ def deleteexpense(request, id):
 def bnnk(request):
     g=accounts.objects.filter(acctype='Undepposited Funds')
     h=accounts.objects.filter(acctype='Cash')
-    i=accounts.objects.filter(acctype='Bank')
+    i=accounts1.objects.filter(acctype='Bank')
     j=accounts.objects.filter(acctype='Cost Of Goods')
    
 
@@ -27856,7 +27857,7 @@ def bnnk(request):
 
 
 def bnk1(request,pk):
-    bk=accounts.objects.get(accountsid=pk)
+    bk=accounts1.objects.get(accounts1id=pk)
     context={'bk':bk,}
     return render(request,"app1/bnk1.html",context)
 
@@ -27911,3 +27912,15 @@ def accpayment(request):
                 
     return redirect('paymentindex')
         
+def trial(request):
+    return render(request,"app1/trialbalance.html")
+
+def cras(request):
+    cras=accounts1.objects.filter(acctype='Current Assets')
+    context={'cras':cras}
+    return render(request,"app1/crassets.html",context)  
+
+def crass(request,pk):
+    cr=accounts1.objects.get(accounts1id=pk)
+    context={'cr':cr}
+    return render(request,'app1/ledger.html',context)
