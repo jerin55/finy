@@ -2,6 +2,7 @@ from curses.ascii import HT
 from http.client import HTTPResponse
 from multiprocessing import context
 import os
+from tkinter import N
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect,HttpResponse
@@ -895,11 +896,15 @@ def createaccount(request):
     acctype = request.POST.get('acctype')
         
     name = request.POST.get('name')
-    description = request.POST.get('description')
+    description = request.POST.get('description')                           
     
     balance = request.POST.get('balance')
+    if balance=="":
+            balance=0.0
     asof = request.POST.get('asof')
     dbbalance=request.POST.get('dbbalance')
+    if dbbalance=="":
+            dbbalance=0.0
        
         
     account = accounts1(acctype=acctype, name=name, description=description,
@@ -27846,13 +27851,14 @@ def deleteexpense(request, id):
 
 @login_required(login_url='regcomp')
 def bnnk(request):
-    g=accounts.objects.filter(acctype='Undepposited Funds')
-    h=accounts.objects.filter(acctype='Cash')
+    
     i=accounts1.objects.filter(acctype='Bank')
-    j=accounts.objects.filter(acctype='Cost Of Goods')
+    c=accounts1.objects.filter(acctype='Cash')
+    u=accounts1.objects.filter(acctype='Undepposited Funds')
+    
    
 
-    context={'g':g,'h':h,'i':i,'j':j}
+    context={'i':i,'c':c,'u':u}
     return render(request,'app1/bnk.html',context)
 
 
@@ -27913,14 +27919,216 @@ def accpayment(request):
     return redirect('paymentindex')
         
 def trial(request):
-    return render(request,"app1/trialbalance.html")
+    tr=accounts1.objects.filter(acctype='Current Assets')
+    ac=accounts1.objects.filter(acctype='Account Receivable')
+    cul=accounts1.objects.filter(acctype='Current Liabilities')
+    fx=accounts1.objects.filter(acctype='Fixed Assets')
+    noca=accounts1.objects.filter(acctype='Non-Current Assetss')
+    acp=accounts1.objects.filter(acctype='Accounts Payable')
+    cr=accounts1.objects.filter(acctype='Credit Card')
+    ncl=accounts1.objects.filter(acctype='Non-Current Liabilities')
+    eq=accounts1.objects.filter(acctype='Equity')
+    inc=accounts1.objects.filter(acctype='Income')
+    onc=accounts1.objects.filter(acctype='Other Incomes')
+    co=accounts1.objects.filter(acctype='Cost Of Goods Sold')
+    ex=accounts1.objects.filter(acctype='Expenses')
+    ox=accounts1.objects.filter(acctype='Other Expenses')
+    
+
+    sum1=0
+    sum2=0
+    for i in tr:
+        sum1+=i.balance
+    for j in tr:
+        sum2+=j.dbbalance  
+
+    sum3=0
+    sum4=0
+    for a in ac:
+        sum3+=a.balance
+    for b in ac:
+        sum4+=b.dbbalance   
+
+    cl1=0
+    cl2=0
+    for a in cul:
+        cl1+=a.balance
+        cl2+=b.dbbalance 
+
+    fx1=0
+    fx2=0
+    for a in fx:
+        fx1+=a.dbbalance
+        fx2+=a.dbbalance    
+
+    nc1=0.0
+    nc2=0.0
+    for a in noca:
+        nc1+=a.balance       
+        nc2+=a.dbbalance 
+
+    acp1=0
+    acp2=0
+    for a in acp:
+        acp1+=a.balance
+        acp2+=a.dbbalance  
+
+    cr1=0
+    cr2=0
+    for a in cr:
+        cr1+=a.balance
+        cr2+=a.dbbalance     
+
+    ncl1=0
+    ncl2=0
+    for a in ncl:
+        ncl1+=a.balance
+        ncl2+=a.dbbalance   
+
+    eq1=0
+    eq2=0
+    for a in eq:
+        eq1+=a.balance
+        eq2+=a.dbbalance  
+
+    inc1=0
+    inc2=0
+    for a in inc:
+        inc1+=a.balance
+        inc2+=a.dbbalance      
+
+
+    onc1=0
+    onc2=0
+    for i in onc:
+        onc1+=i.balance
+        onc2+=i.dbbalance   
+
+
+    co1=0
+    co2=0
+    for a in co:
+        co1+=a.balance
+        co2+=a.dbbalance      
+
+    ex1=0
+    ex2=0
+    for a in ex:
+        ex1+=a.balance
+        ex2+=a.dbbalance     
+
+    ox1=0
+    ox2=0
+    for a in ox:
+        ox1+=a.balance
+        ox2+=a.dbbalance    
+
+    crtot=sum1+sum3+cl1+fx1+nc1+acp1+cr1+ncl1+eq1+inc1+onc1+co1+ex1+ox1
+    drtot=sum2+sum4+cl2+fx2+nc2+acp2+cr2+ncl2+eq2+inc2+onc2+co2+ex2+ox2
+
+    diff=crtot-drtot
+
+
+
+
+
+    context={'tr':tr,'sum1':sum1,'sum2':sum2,'sum3':sum3,'sum4':sum4,'cl1':cl1,'cl2':cl2,'fx1':fx1,'fx2':fx2,
+    'nc1':nc1,'nc2':nc2,'acp1':acp1,'acp2':acp2,'cr1':cr1,'cr2':cr2,'ncl1':ncl1,'ncl2':ncl2,'eq1':eq1,'eq2':eq2,
+    'inc1':inc1,'inc2':inc2,'onc1':onc1,'onc2':onc2,'co1':co1,'co2':co2,'ex1':ex1,'ex2':ex2,'ox1':ox1,'ox2':ox2,
+    'crtot':crtot,'drtot':drtot,'diff':diff}
+    return render(request,"app1/trialbalance.html",context)
 
 def cras(request):
     cras=accounts1.objects.filter(acctype='Current Assets')
-    context={'cras':cras}
+
+    cr=0
+    dr=0
+    for a in cras:
+        cr+=a.balance
+        dr+=a.dbbalance
+
+
+    context={'cras':cras,'cr':cr,'dr':dr}
     return render(request,"app1/crassets.html",context)  
 
-def crass(request,pk):
+
+
+def acre(request):
+    ac=accounts1.objects.filter(acctype='Account Receivable')
+    context={'ac':ac}
+    return render(request,"app1/acre.html",context)  
+
+
+
+def curli(request):
+    li= accounts1.objects.filter(acctype='Current Liabilities')   
+    context={'li':li} 
+    return render(request,"app1/curli.html",context)
+
+
+def fix(request):
+    fix=accounts1.objects.filter(acctype='Fixed Assets') 
+    context={'fix':fix}
+    return render(request,"app1/fix.html",context)
+
+def nonass(request):
+    nona=accounts1.objects.filter(acctype='Non-Current Assets')
+    context={'nona':nona} 
+    return render(request,"app1/nonass.html",context) 
+
+
+def accpay(request):
+    acp= accounts1.objects.filter(acctype='Accounts Payable')  
+    context={'acp':acp}
+    return render(request,"app1/accpay.html",context)
+
+def credc(request):
+    cre= accounts1.objects.filter(acctype='Credit Card')  
+    context={'cre':cre}
+    return render(request,"app1/credc.html",context)    
+
+
+def nonli(request):
+    nli= accounts1.objects.filter(acctype='Non-Current Liabilities')  
+    context={'nli':nli}
+    return render(request,"app1/nonli.html",context)        
+
+
+def eqt(request):
+    eq= accounts1.objects.filter(acctype='Equity')  
+    context={'eq':eq}
+    return render(request,"app1/eqt.html",context)    
+
+def incm(request):
+    inc= accounts1.objects.filter(acctype='Income')  
+    context={'inc':inc}
+    return render(request,"app1/incm.html",context) 
+
+
+def oincm(request):
+    oinc= accounts1.objects.filter(acctype='Other Incomes')  
+    context={'oinc':oinc}
+    return render(request,"app1/oincm.html",context)                
+
+
+def cog(request):
+    co= accounts1.objects.filter(acctype='Cost Of Goods Sold')  
+    context={'co':co}
+    return render(request,"app1/cog.html",context) 
+
+
+def exp(request):
+    ex=accounts1.objects.filter(acctype='Expenses')  
+    context={'ex':ex}
+    return render(request,"app1/exp.html",context)                         
+
+
+    
+
+def acres(request,pk):
     cr=accounts1.objects.get(accounts1id=pk)
     context={'cr':cr}
-    return render(request,'app1/ledger.html',context)
+    return render(request,'app1/ledger.html',context)   
+
+
+    

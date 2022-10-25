@@ -68,7 +68,7 @@
             </div>
             <div class="col-sm-8   m-0 p-0"></div>
             <div class="col-sm-2   m-0 p-0" style="text-align: center;">
-                <p>Current Assets</p>
+                <p>Current Liabilities</p>
                 <p><b></b></p>
                 <h6>For 1-Apr-22</h6>
                 
@@ -90,14 +90,14 @@
                       </tr>
                       
 
-                     {% for cras in cras %}
+                     {% for oinc in oinc %}
                      
                       <tr  class="tr1" >
                         
-                        <td scope="row"><a  href="{% url 'acres' cras.accounts1id   %}">{{ cras.name }}</a></td>
-                        <td style="text-align: center;">{{ cras.balance }} 
+                        <td scope="row"><a  href="{% url 'acres' oinc.accounts1id   %}">{{ oinc.name }}</a></td>
+                        <td style="text-align: center;">{{ oinc.balance }} 
                        </td>
-                       <td style="text-align: center;">{{ cras.dbbalance }}</td>
+                       <td style="text-align: center;">{{ oinc.dbbalance }}</td>
                        
                     
 
@@ -110,16 +110,17 @@
                       <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
                       </tr>
                       <tr>
                         <th>Grand Total</th>
-                        <th style="text-align: center;" class="col-sm-2 m-0 p-0">{{ cr }}  </th>
-                        <th style="text-align: center;" class="col-sm-2 m-0 p-0"> {{ dr }}</th>
+                        <th style="text-align: center;" class="col-sm-2 m-0 p-0">{{ sum1 }}  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ sum2 }}</th>
+                        
                       </tr>
                       
                      
                    
+                     
+
                 </table>
 
 

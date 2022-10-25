@@ -884,7 +884,7 @@ class accounts1(models.Model):
     acctype = models.CharField(max_length=100)
     detype = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=100,null=True)
     gst = models.CharField(max_length=100, default='', null=True)
     deftaxcode = models.CharField(max_length=100)
     balance = models.FloatField(default=0.0, null=True)

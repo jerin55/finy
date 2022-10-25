@@ -305,9 +305,14 @@
                     
                     <option  value="yes"></option>
                  
-                    <option value="Undepposited Funds">Undepposited Funds</option>
+                    
                     <option value="Bank">Bank</option>
-                    <option value="Cash">Petty Cash</option>
+                   
+                    
+                    <option value="Cash">Cash</option>
+                    <option value="Undepposited Funds">Undepposited Funds</option>
+                 
+                    
                    
                     
                   
@@ -357,7 +362,7 @@
                     <tr class="rw">
                        
                         <td  style="text-align: center;">
-                            <a href="{% url 'bnk1' h.accountsid   %}">{{ h.name }}</a> 
+                            <a href="{% url 'bnk1' h.accounts1id   %}">{{ h.name }}</a> 
                         </td>
                         <td  style="text-align: center;">
                            {{ h.acctype }}
@@ -405,17 +410,17 @@
                     </td>
                     
                 </tr  class="rw">
-                {% for g in g %}
+                {% for c in c %}
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' g.accountsid   %}">{{ g.name }}</a> 
+                        <a href="{% url 'bnk1' c.accounts1id   %}">{{ c.name }}</a> 
                     </td>
                     <td style="text-align: center;">
-                       {{ g.acctype }}
+                       {{ c.acctype }}
                     </td>
                     <td  style="text-align: center;">
-                       {{ g.balance }}
+                       {{ c.balance }}
                     </td>
                     
                 </tr>
@@ -504,7 +509,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' bnk.accountsid   %}">{{ bnk.name }}</a> 
+                        <a href="{% url 'bnk1' bnk.accounts1id   %}">{{ bnk.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ bnk.acctype }}
@@ -549,7 +554,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' fx.accountsid   %}">{{ fx.name }}</a> 
+                        <a href="{% url 'bnk1' fx.accounts1id   %}">{{ fx.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ fx.acctype }}
@@ -594,7 +599,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' nca.accountsid   %}">{{ nca.name }}</a> 
+                        <a href="{% url 'bnk1' nca.accounts1id   %}">{{ nca.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ nca.acctype }}
@@ -636,17 +641,17 @@
                     </td>
                     
                 </tr  class="rw">
-                {% for apy in apy %}
+                {% for u in u %}
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' apy.accountsid   %}">{{ apy.name }}</a> 
+                        <a href="{% url 'bnk1' u.accounts1id   %}">{{ u.name }}</a> 
                     </td>
                     <td style="text-align: center;">
-                       {{ apy.acctype }}
+                       {{ u.acctype }}
                     </td>
                     <td  style="text-align: center;">
-                       {{ apy.balance }}
+                       {{ u.balance }}
                     </td>
                     
                 </tr>
@@ -685,7 +690,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' cd.accountsid   %}">{{ cd.name }}</a> 
+                        <a href="{% url 'bnk1' cd.accounts1id   %}">{{ cd.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ cd.acctype }}
@@ -731,7 +736,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' ncl.accountsid   %}">{{ ncl.name }}</a> 
+                        <a href="{% url 'bnk1' ncl.accounts1id   %}">{{ ncl.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ ncl.acctype }}
@@ -776,7 +781,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' eq.accountsid   %}">{{ eq.name }}</a> 
+                        <a href="{% url 'bnk1' eq.accounts1id   %}">{{ eq.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ eq.acctype }}
@@ -821,7 +826,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' inc.accountsid   %}">{{ inc.name }}</a> 
+                        <a href="{% url 'bnk1' inc.accounts1id   %}">{{ inc.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ inc.acctype }}
@@ -867,7 +872,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' oi.accountsid   %}">{{ oi.name }}</a> 
+                        <a href="{% url 'bnk1' oi.accounts1id   %}">{{ oi.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ oi.acctype }}
@@ -912,7 +917,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' j.accountsid   %}">{{ j.name }}</a> 
+                        <a href="{% url 'bnk1' j.accounts1id   %}">{{ j.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ j.acctype }}
@@ -958,7 +963,7 @@
                 <tr class="rw" >
                     <td name="name" id="name"  style="text-align: center;">
                          
-                        <a href="{% url 'bnk1' ex.accountsid   %}">{{ ex.name }}</a> 
+                        <a href="{% url 'bnk1' ex.accounts1id   %}">{{ ex.name }}</a> 
                     </td>
                     <td style="text-align: center;">
                        {{ ex.acctype }}
@@ -1007,14 +1012,14 @@
 
 $('.under').change(function(){
             var responseID = $(this).val();
-            if(responseID =="Cash"){
+            if(responseID =="Account Receivable"){
                 $('#pDetails').removeClass("hidden");
                 $('#pDetails').addClass("show");
            }else{
                 $('#pDetails').removeClass("show");
                 $('#pDetails').addClass("hidden");
             }
-            if(responseID =="Undepposited Funds"){
+            if(responseID =="Cash"){
                 $('#pDetail').removeClass("hi");
                 $('#pDetail').addClass("show");
            }else{
@@ -1035,21 +1040,21 @@ $('.under').change(function(){
                 $('#bnk1').removeClass("show");
                 $('#bnk1').addClass("bnk");
             }
-            if(responseID =="Fixed Assets"){
+            if(responseID =="Non-Current Assets"){
                 $('#fx1').removeClass("fx");
                 $('#fx1').addClass("show");
            }else{
                 $('#fx1').removeClass("show");
                 $('#fx1').addClass("fx");
             }
-            if(responseID =="Non-Current Assets"){
+            if(responseID ==""){
                 $('#nca1').removeClass("nca");
                 $('#nca1').addClass("show");
            }else{
                 $('#nca1').removeClass("show");
                 $('#nca1').addClass("nca");
             }
-            if(responseID =="Accounts Payable"){
+            if(responseID =="Undepposited Funds"){
                 $('#apy1').removeClass("apy");
                 $('#apy1').addClass("show");
            }else{
@@ -1070,7 +1075,7 @@ $('.under').change(function(){
                 $('#ncl1').removeClass("show");
                 $('#ncl1').addClass("ncl");
             }
-            if(responseID =="Equity"){
+            if(responseID =="Cost Of Goods Sold"){
                 $('#eq1').removeClass("eq");
                 $('#eq1').addClass("show");
            }else{
@@ -1091,7 +1096,7 @@ $('.under').change(function(){
                 $('#oi1').removeClass("show");
                 $('#oi1').addClass("oi");
             }
-            if(responseID =="Cost Of Goods"){
+            if(responseID =="Current Assets"){
                 $('#cg1').removeClass("cg");
                 $('#cg1').addClass("show");
            }else{

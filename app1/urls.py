@@ -558,7 +558,20 @@ urlpatterns = [
     re_path(r'^accpayment$',views.accpayment,name='accpayment'),
     re_path(r'^trial$',views.trial,name='trial'),
     re_path(r'^cras$',views.cras,name='cras'),
-    re_path(r'^crass/(?P<pk>\d+)$',views.crass,name='crass'),
+    
+    re_path(r'^acre$',views.acre,name='acre'),
+    re_path(r'^acres/(?P<pk>\d+)$',views.acres,name='acres'),
+    re_path(r'^curli$',views.curli,name='curli'),
+    re_path(r'^fix$',views.fix,name='fix'),
+    re_path(r'^nonass$',views.nonass,name='nonass'),
+    re_path(r'^accpay$',views.accpay,name='accpay'),
+    re_path(r'^credc$',views.credc,name='credc'),
+    re_path(r'^nonli$',views.nonli,name='nonli'),
+    re_path(r'^eqt$',views.eqt,name='eqt'),
+    re_path(r'^incm$',views.incm,name='incm'),
+    re_path(r'^oincm$',views.oincm,name='oincm'),
+    re_path(r'^cog$',views.cog,name='cog'),
+    re_path(r'^exp$',views.exp,name='exp'),
     
 
     
